@@ -42,10 +42,12 @@ const Register = () => {
     
     setIsLoading(true);
     
-    const { confirmPassword, ...registerData } = formData;
+    // Remove confirmPassword AND role before sending to backend
+    const { confirmPassword, role, ...registerData } = formData;
     const result = await register(registerData);
     setIsLoading(false);
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-indigo-50 flex items-center justify-center p-4">

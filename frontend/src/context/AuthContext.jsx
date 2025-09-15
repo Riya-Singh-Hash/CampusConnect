@@ -52,20 +52,22 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (userData) => {
-    try {
-      setError('');
-      const response = await authAPI.register(userData);
-      const { token, user: newUser } = response.data;
-      
-      localStorage.setItem('token', token);
-      setUser(newUser);
-      return { success: true };
-    } catch (error) {
-      const message = error.response?.data?.message || 'Registration failed';
-      setError(message);
-      return { success: false, error: message };
-    }
-  };
+  try {
+    setError('');
+    const response = await authAPI.register(userData);
+    const { token, user: newUser } = response.data;
+
+    localStorage.setItem('token', token);
+    setUser(newUser);
+    return { success: true };
+  } catch (err) {
+    // Use actual backend message if available
+    const message = err.response?.data?.message || 'Registration failed';
+    setError(message);
+    return { success: false, error: message };
+  }
+};
+
 
   const logout = () => {
     localStorage.removeItem('token');
