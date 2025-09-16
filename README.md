@@ -294,8 +294,3 @@ NODE_ENV=production npm start
 - [ ] **Multi-language Support**
 - [ ] **Push Notifications**
 
----
-
----
-
-*Last Updated: January 2025*
